@@ -1,0 +1,15 @@
+{% extends "layout-1.html" %}
+{% block title %}
+    BookJar - Log In
+{% endblock %}
+
+{% block body %}
+    <h1>Log In</h1>
+    <form action="/login" method="post">
+        <input type="text" placeholder="Username" name="username">
+        <input type="password" placeholder="Password" name="password">
+        <button type="submit">Log In</button>
+    </form>
+    <a href="register">Create New Account</a>
+    
+{% endblock %}

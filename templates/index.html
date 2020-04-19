@@ -1,0 +1,15 @@
+{% extends "layout-1.html" %}
+{% block title %}
+    BookJar - Search
+{% endblock %}
+
+{% block body %}
+    <h1>Search Books!</h1>
+    <a href="{{ url_for('logout') }}">Log Out</a>
+
+    <form action="/search_books" method="get">
+        <input type="text" name="search" id="search_input" placeholder="Search by title, author or ISBN">
+        <button type="submit">O</button>
+    </form>
+
+{% endblock %}
