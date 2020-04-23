@@ -1,39 +1,32 @@
-{% extends "layout-1.html" %}
+{% extends "search-layout.html" %}
 {% block title %}
-    Search
+    Results for "{{ search }}"
 {% endblock %}
-
 {% block body %}
-    <h1>Search Books!</h1>
-    <a href="{{ url_for('logout') }}">Log Out</a>
-
-    <form action="/search_books" method="get">
-        <input type="text" name="search" id="search_input" placeholder="Search by title, author or ISBN" value="{{ search }}">
-        <button type="submit">O</button>
-    </form>
-    
-
+<div id="results">
     {% if search == "" %}
-    <p>nothing typed</p>
-
+    <p class="title-select">Nothing typed</p>
     {% elif results|length == 0 %}
-    <p>no result</p>
-    
+    <p class="title-select">No result</p>
     {% else %}
+    <p id="title-mobile" class="title-select">Press title for details</p>
+    <p id="title-web" class="title-select">Click title for details</p>
     <div class="table-responsive">
         <table class="table">
             <thead class="thead-dark">
-            <tr>
-                <th scope="col">Title</th>
-                <th scope="col">Author</th>
-                <th scope="col">Year</th>
-                <th scope="col">ISBN</th>
-            </tr>
+                <tr>
+                    <th scope="col">Title</th>
+                    <th scope="col">Author</th>
+                    <th scope="col">Year</th>
+                    <th scope="col">ISBN</th>
+                </tr>
             </thead>
             <tbody>
             {% for result in results %}
             <tr>
-                <td scope="col"><a href="{{ url_for('book', isbn=result.isbn) }}">{{ result.title }}</a></td>
+                <td scope="col">
+                    <a href="{{ url_for('book', isbn=result.isbn) }}" class="table-link">{{ result.title }}</a>
+                </td>
                 <td scope="col">{{ result.author }}</td>
                 <td scope="col">{{ result.year }}</td>
                 <td scope="col">{{ result.isbn }}</td>
@@ -43,4 +36,6 @@
         </table>
     </div>
     {% endif %}
+</div>
 {% endblock %}
+

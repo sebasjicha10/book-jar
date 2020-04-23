@@ -1,61 +1,98 @@
-{% extends "layout-1.html" %}
+{% extends "book-layout.html" %}
 {% block title %}
     {{ book.title }}
 {% endblock %}
 
 {% block body %}
-    <div>
-        <h1>{{ book.title }}</h1>
-        <h2>{{ book.author }}</h2>
-        <h3>{{ book.isbn }}</h3>
-    </div>
-
-    <div>
-        {% if ratings_count is not defined or average_rating is not defined %}
-        <div></div>
-
-        {% else %}
-        <h1>goodreads</h1>
-        <p>{{ ratings_count }}</p>
-        <p>{{ average_rating }}</p>
-        {% endif %}
-    </div>
-
-    <div>
-        <h1>Reviews</h1>
-        {% if reviews|length == 0 %}
-        <p>No reviews. Be the first one to add one!</p>
-        {% else %}
-        {% for review in reviews|reverse %}
-        <div>
-            <p>{{ review.username }} rated this book {{ review.rating }} of 5</p>
-            <p>{{ review.review }}</p>
+    <div id="web-review">
+        <div id="web-left">
+            <div id="basic-info">
+                <h1>{{ book.title }}</h1>
+                <h2>by {{ book.author }}</h2>
+                <h3>Publication year: {{ book.year }}</h3>
+                <h4>ISBN: {{ book.isbn }}</h4>
+            </div>
+            <div id="goodreads">
+                {% if ratings_count is not defined or average_rating is not defined %}
+                <div></div>
+                {% else %}  
+                <img id="goodreads-logo" src="../static/images/good-reads.png" alt="Goodreads logo">
+                <div id="goodreads-data">
+                    <div class="stats">
+                        <h2>Average rating</h2>
+                        <p>{{ average_rating }}</p>
+                    </div>
+                    <div class="stats">
+                        <h2>Number of ratings</h2>
+                        <p>{{ ratings_count }}</p>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+            <div id="reviews">
+                <div id="review-header">
+                    <div class="headers">
+                        <img id="review-logo" src="../static/images/book-jar-logo.svg" alt="BookJar logo">
+                        <h2>Reviews</h2>
+                    </div>
+                    <div id="add" class="headers" onclick="showForm()">
+                        <!-- If user previously reviewed, no Add review Button is rendered (Mobile) -->
+                        {% if reviewed == false %}
+                        <i id="plus" class="fas fa-plus"></i>
+                        <p>Add review</p>
+                        {% endif %}
+                    </div>
+                </div>
+                {% if reviews|length == 0 %}
+                <p id="no-reviews">No reviews. Be the first one to add one!</p>
+                {% else %}
+                {% for review in reviews|reverse %}
+                <div id="review">
+                    <p id="user-rating"><span id="username">{{ review.username }}</span> rated this book {{ review.rating }} of 5</p>
+                    <p id="user-review">{{ review.review }}</p>
+                </div>
+                {% endfor %}
+                {% endif %}
+            </div>
         </div>
-        {% endfor %}
-        {% endif %}
+        <div id="submit-review">
+            {% if reviewed == true %}
+            <!-- Not used in mobile -->
+            <p id="already-reviewed">You already reviewed {{ book.title }}</p> 
+            {% else %}
+            <form id="review-form" action="/review" method="post" onsubmit="hideForm()">
+                <div id="rating-top">
+                    <h3>Your rating</h3>
+                    <i id="close" class="fas fa-times" onclick="hideForm()"></i>
+                </div>
+                <div id="radio">
+                    <input checked type="radio" id="five" name="rating" value="5">
+                    <label for="five">5</label>
+                    <input type="radio" id="four" name="rating" value="4">
+                    <label for="four">4</label>
+                    <input type="radio" id="tree" name="rating" value="3">
+                    <label for="tree">3</label>
+                    <input type="radio" id="two" name="rating" value="2">
+                    <label for="two">2</label>
+                    <input type="radio" id="one" name="rating" value="1">
+                    <label for="one">1</label>
+                </div>
+                <h3>Your review</h3>
+                <textarea id="review-text" name="review" placeholder="Share your thoughts" maxlength="255"></textarea>
+                <input hidden type="text" value="{{ book.book_id }}" name="book">
+                <button type="submit">Submit</button>
+            </form>
+            {% endif %}
+        </div>
     </div>
-    <div>
-        {% if reviewed == true %}
-        <p>You already reviewed</p>
-        {% else %}
-        <form action="/review" method="get">
-            <h3>Your rating</h3>
-            <input checked type="radio" id="five" name="rating" value="5">
-            <label for="five">5</label>
-            <input type="radio" id="four" name="rating" value="4">
-            <label for="four">4</label>
-            <input type="radio" id="tree" name="rating" value="3">
-            <label for="tree">3</label>
-            <input type="radio" id="two" name="rating" value="2">
-            <label for="two">2</label>
-            <input type="radio" id="one" name="rating" value="1">
-            <label for="one">1</label>
-            <h3>Your review</h3>
-            <textarea name="review" placeholder="Share your thoughts" maxlength="255"></textarea>
-            <input hidden type="text" value="{{ book.book_id }}" name="book">
-            <button type="submit">Submit</button>
-        </form>
-        {% endif %}
-    </div>
- 
+    <script>
+        const showForm = () => {
+            let reviewForm = document.getElementById("submit-review")
+            reviewForm.style.display = "block"
+        }
+        const hideForm = () => {
+            let reviewForm = document.getElementById("submit-review")
+            reviewForm.style.display = "none"
+        }
+    </script>
 {% endblock %}

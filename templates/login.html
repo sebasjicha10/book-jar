@@ -1,15 +1,23 @@
-{% extends "layout-1.html" %}
+{% extends "landing-layout.html" %}
 {% block title %}
     BookJar - Log In
 {% endblock %}
 
 {% block body %}
-    <h1>Log In</h1>
-    <form action="/login" method="post">
+    <form id="login" action="/login" method="post">
         <input type="text" placeholder="Username" name="username">
-        <input type="password" placeholder="Password" name="password">
+        <input type="password" placeholder="Password" name="password" pattern=".{6,}">
         <button type="submit">Log In</button>
     </form>
-    <a href="register">Create New Account</a>
-    
+    <div id="or">
+        <hr>
+        <p>or</p>
+        <hr>
+    </div>
+    <form  action="register" id="register">
+        <button id="new-account" href="register">Create New Account</button>
+    </form >
+    <script>
+        
+    </script>
 {% endblock %}

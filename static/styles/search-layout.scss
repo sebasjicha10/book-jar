@@ -1,0 +1,183 @@
+ /* Search - Mobile First */
+ $book-jar-blue: #0096E6;
+ $book-jar-purple: #8860D0;
+ $book-jar-lightblue: #84CEEB;
+ $grey: #BCB5B5;
+
+ body {
+    width: 100%;
+    background-color: white;
+        .containter-fluid {
+            height: 100%;
+            padding: 0;
+            text-align: center;
+            /* Header and Nav - Mobile First */
+            header {
+                top: 0;
+                border-bottom: 0.5px solid $grey;
+                margin-bottom: 15px;
+                    nav {
+                        #logout {
+                            position: absolute;
+                            left: 0;
+                            margin-top: 20px;
+                            margin-left: 10px;
+                            color: $book-jar-blue;
+                        }
+                        #logo {
+                            width: 41px;
+                            height: 50px;
+                        }
+                        #logout:hover, #logo:hover  {
+                            opacity: 0.8;
+                            text-decoration: none;
+                        }  
+                        #logo-web {
+                            display: none;
+                        }
+                    }
+            }
+            /* Search Bar - Mobile First */
+            #web-form {
+                display: none;
+            }
+            #mobile-form {
+                width: 100%;
+                margin-bottom: 15px;
+                .search_input {
+                    width: 95%;
+                    padding: 4px 20px 4px 2px;
+                    border: 1px solid black;
+                    border-radius: 0px;
+                }
+                button {
+                    position: absolute;
+                    right: 25px;
+                    margin: 5px;
+                    background: none;
+                    padding: 0;
+                    border: none;
+                    i {
+                        color: $book-jar-blue;
+                    }
+                }
+                button:hover {
+                    opacity: 0.5;
+                }   
+            }
+            /*Results - Mobile First */
+            #background {
+                z-index: -100;
+                min-height: 60%;
+                width: 100%;
+                background-image: url("../images/book-jar-logo.svg");
+                background-repeat: no-repeat;
+                background-position: center center; 
+                background-size: 50% 50%;
+                opacity: 0.05;
+                position: absolute;
+                top: 10;
+                left: 0;
+            }
+        }
+ }
+
+/* Search Results - Mobile First */
+ #results {
+     z-index: 200;
+     .title-select {
+         color: $book-jar-blue;
+         padding-left: 12px;
+         float: left;
+     }
+     #title-web {
+         display: none;
+     }
+ }
+
+/* Table - Mobile First */
+.table-responsive {
+    .table {
+        .thead-dark {
+            tr {
+                th {
+                    background-color: $book-jar-purple;
+                    border: none;
+                }
+            }
+        }
+        .table-link {
+            color: $book-jar-blue;
+            text-decoration: none;
+        }
+        .table-link:hover {
+            opacity: 0.4;
+        }
+    }
+}
+
+/* Desktops and laptops */
+@media screen  and (min-width : 1200px) {
+    body {
+        .containter-fluid {
+            header {
+                nav {
+                    width: 80%;
+                    margin: 0 auto;
+                    display: flex;
+                    flex-direction: row-reverse;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 10px 0px;
+                    #logout {
+                        position: relative;
+                        margin: 0;
+                    }
+                    #web-form {
+                        display: flex;
+                        width: 65%;
+                        .search_input {
+                            width: 100%;
+                            padding: 2px 20px 2px 4px;
+                            border: 1px solid $book-jar-lightblue;
+                            border-radius: 0px;
+                        }
+                        button {
+                            position: relative;
+                            right: 25px;
+                            background: none;
+                            padding: 0;
+                            border: none;
+                            i {
+                                color: $book-jar-blue;
+                            }
+                        }
+                        button:hover {
+                            opacity: 0.5;
+                        }
+                    }
+                    #logo-web {
+                        display: inline-block;
+                        width: 100px;
+                    }
+                    #logo-web:hover {
+                        opacity: 0.8;
+                    }
+                }
+            }
+            #mobile-form, #logo-mobile {
+                display: none;
+            }
+        }
+    }
+    #results {
+        margin: 0 auto;
+        width: 80%;
+        #title-mobile {
+            display: none;
+        }
+        #title-web {
+            display: inline-block;
+        }
+    }
+}

@@ -1,0 +1,295 @@
+ /* Search - Mobile First */
+ $book-jar-blue: #0096E6;
+ $book-jar-purple: #8860D0;
+ $button-font: white;
+ $grey: #BCB5B5;
+
+ body {
+    width: 100%;
+    background-color: white;
+        .containter-fluid {
+            height: 100%;
+            padding: 0;
+            text-align: center;
+            /* Header and Nav - Mobile First */
+            header {
+                top: 0;
+                border-bottom: 0.5px solid $grey;
+                margin-bottom: 15px;
+                    nav {
+                        #logout {
+                            position: absolute;
+                            left: 0;
+                            margin-top: 20px;
+                            margin-left: 10px;
+                            color: $book-jar-blue;
+                        }
+                        #logo {
+                            width: 41px;
+                            height: 50px;
+                        }
+                        #logout:hover, #logo:hover  {
+                            opacity: 0.8;
+                            text-decoration: none;
+                        }  
+                        #logo-web {
+                            display: none;
+                        }
+                    }
+            }
+            #basic-info {
+                margin-bottom: 40px;
+                h1, h2, h3 {
+                    padding: 0;
+                    margin: 0;
+                }
+                h2 {
+                    font-size: 20px;
+                }
+                h3 {
+                    font-size: 14px;
+                }
+                h4 {
+                    font-size: 12px;
+                }
+            }
+            #goodreads {
+                margin-bottom: 40px;
+                #goodreads-logo {
+                    width: 150px;
+                }
+                #goodreads-data {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-around;
+                    margin-top: 10px;
+                    h2, p {
+                        font-size: 16px;
+                        margin: 0;
+                    }
+                    p {
+                        font-weight: bold;
+                        color: $book-jar-purple;
+                    }
+                }
+            }
+            #reviews {
+                text-align: left;
+                width: 90%;
+                margin: 0 auto;
+                #review-header {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-bottom: 5px;
+                    .headers {
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                    }
+          
+                    #add:hover {
+                        opacity: 0.8;
+                    }
+                    #review-logo {
+                        width: 24px;
+                        opacity: 0.5;
+                    }
+                    h2, p {
+                        padding: 0;
+                        margin: 0;
+                    }
+                    h2 {
+                        font-size: 18px;
+                    }
+                    p {
+                        font-size: 16px;
+                        color: $book-jar-blue;
+                    }
+                    #plus {
+                        color: $book-jar-blue;
+                    }
+                }
+                #no-reviews {
+                    margin-top: 20px;
+                    color: $book-jar-purple;
+                }
+                #review {
+                    border-top: 0.5px solid $book-jar-blue;
+                    padding: 15px 0px;
+                    margin: 0;
+                    #user-rating {
+                        margin: 0;
+                        font-size: 12px;
+                        margin-bottom: 4px;
+                        #username {
+                            font-weight: bold;
+                            font-size: 14px;
+                            color: $book-jar-purple;
+                        }
+                    }
+                    #user-review {
+                        margin: 0;
+                        word-wrap: break-word;
+                        white-space: normal;
+                    }
+                }
+            }
+            #submit-review {
+                position: absolute;
+                top: 0;
+                width: 100vw;
+                height: 100vh;
+                display: none;
+                #already-reviewd {
+                    display: none;
+                }
+                form {
+                    background-color: white;
+                    margin: 0 auto;
+                    width: 95%;
+                    display: flex;
+                    flex-direction: column;
+                    text-align: left;
+                    height: 70vh;
+                    margin-top: 115px;
+                    #rating-top {
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: space-between;
+                        align-items: center;
+                        #close {
+                            margin-right: 15px;
+                        }
+                        #close:hover {
+                            opacity: 0.7;
+                        }
+                    }
+                    #radio {
+                        margin-bottom: 10px;
+                        label {
+                            margin-right: 20px;
+                        }
+                    }
+                    #review-text {
+                        border-radius: 0px;
+                        border: 1px solid $book-jar-purple;
+                        height: 125px;
+                        margin-bottom: 10px;
+                    }
+                    button {
+                        padding: 8px 6px;
+                        border: none;
+                        border-radius: 0px;
+                        background-color: $book-jar-blue;
+                        color: $button-font;
+                        margin-bottom: 10px;
+                    }
+                    button:hover {
+                        opacity: 0.8;
+                    }
+                }
+            }
+
+        }
+ }
+
+ /* Desktops and laptops */
+@media screen and (min-width : 1200px) {
+    body {
+        .containter-fluid{
+            header {
+                nav {
+                    width: 80%;
+                    margin: 0 auto;
+                    display: flex;
+                    flex-direction: row-reverse;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 10px 0px;
+                    #logo-mobile {
+                        display: none;
+                    }
+                    #logo-web {
+                        display: inline-block;
+                        width: 100px;
+                    }
+                    #logo-web:hover {
+                        opacity: 0.8;
+                    }
+                    #logout {
+                        position: relative;
+                        margin: 0;
+                    }
+                }
+            }
+            #goodreads {
+                #goodreads-data {
+                    flex-direction: column;
+                    .stats {
+                        display: flex;
+                        margin-bottom: 10px;
+                        h2 {
+                            margin-right: 20px;
+                        }
+                    }
+                }
+       
+            }
+            #reviews {
+                width: 100%;
+            }
+        }
+        #web-review {
+            width: 80%;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: row;
+            #web-left {
+                width: 50%;
+        
+                text-align: left;
+                #add {
+                    /* Eliminate add view button */
+                    display: none;
+                }
+            }
+            #submit-review {
+                display: inline-block;
+                position: relative;
+                width: 50%;
+                height: 100%;
+                #already-reviewed {
+                    float: right;
+                    display: inline-block;
+                }
+                form {
+                    margin: 0;
+                    padding: 0;
+                    width: 80%;
+                    float: right;
+                    h3 {
+                        font-size: 18px;
+                        font-weight: normal;
+                    }
+                    #review-text {
+                        height: 225px;
+                    }
+                    button {
+                        padding: 2px;
+                        font-size: 14px;
+                        width: 40%;
+
+                    }
+
+                    #close {
+                        /* Eliminate close button  */
+                        display: none;
+                    }
+                }
+            }
+    
+        }
+    }
+}

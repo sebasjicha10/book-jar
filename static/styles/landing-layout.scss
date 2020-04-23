@@ -1,0 +1,92 @@
+ /* Login and Register - Mobile First */
+ $book-jar-blue: #0096E6;
+ $book-jar-purple: #8860D0;
+ $button-font: white;
+
+body {
+    width: 100%;
+    background-color: white;
+        .containter-fluid {
+            margin: 0 auto;
+            padding: 0;
+            text-align: center;
+                img {
+                    margin: 6vh 0;
+                    width: 60%;
+                    max-width: 435px;
+                }
+        }
+}
+
+ /* Login and Register Form */
+%form {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+        input {
+            margin-bottom: 14px;
+            padding: 8px 6px;
+            border: 1px solid black;
+            border-radius: 0px;
+        }
+        button {
+            padding: 8px 6px;
+            border: none;
+            border-radius: 0px;
+            background-color: $book-jar-blue;
+            color: $button-font;
+            margin-top: 28px;
+            margin-bottom: 42px;
+        }
+        button:hover {
+            opacity: 0.8;
+        }
+}
+
+form {
+    @extend %form
+}
+#or {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+        hr {
+            width: 100%;
+        }
+        p {
+            padding: 0px 15px;
+            position: relative;
+            top: 5px;
+        }
+}
+
+#register {
+        #new-account {
+            margin-bottom: 0px;
+            background-color: $book-jar-purple;
+        }
+}
+
+/* Desktops and laptops */
+@media screen  and (min-width : 1200px) {
+    form {
+        width: 40%;
+        input {
+            padding: 4px 3px;
+        }
+        button {
+            padding: 4px 3px;
+            width: 50%;
+            margin: 0 auto;
+        }
+    }
+    #or {
+        width: 40%;
+        padding: 20px 0px;
+    }
+}

@@ -1,7 +1,7 @@
 import os
 import requests
 
-from flask import Flask, session, render_template, request, redirect, jsonify
+from flask import Flask, session, render_template, request, redirect, jsonify, flash
 from flask_session import Session
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
@@ -70,7 +70,7 @@ def login():
 
         # Remember which user has logged in
         session["user_id"] = given_username[0]["user_id"]
-        
+
         # Redirect user to home page
         return redirect("/")
 
@@ -174,7 +174,7 @@ def book(isbn):
     goodreads = data["books"][0]
 
     # Fetch reviews
-    reviews = db.execute("SELECT rating, review, reviews.user_id, username FROM reviews JOIN users ON users.user_id = reviews.user_id::int WHERE book_id::int = :book_id;", {"book_id": book.book_id}).fetchall()
+    reviews = db.execute("SELECT DISTINCT rating, review, reviews.user_id, username FROM reviews JOIN users ON users.user_id = reviews.user_id::int WHERE book_id::int = :book_id;", {"book_id": book.book_id}).fetchall()
 
     # Ensure one review per user
     reviewed = False
@@ -185,23 +185,30 @@ def book(isbn):
     return render_template("book.html", book=book, ratings_count=goodreads['work_ratings_count'], average_rating=goodreads['average_rating'], reviews=reviews, reviewed=reviewed)
    
 
-@app.route("/review", methods=["GET"])
+@app.route("/review", methods=["POST"])
 @login_required
 def review():
     """Add reviews"""
 
     # Variables 
-    rating = request.args.get("rating")
-    review = request.args.get("review")
-    book_id = request.args.get("book")
+    rating = request.form.get("rating")
+    review = request.form.get("review")
+    book_id = request.form.get("book")
     user = session["user_id"]
-
-    # Adding review to data base
-    db.execute("INSERT INTO reviews (book_id, user_id, review, rating) VALUES (:book, :user, :review, :rating)", {"book": book_id, "user": user, "review": review, "rating": rating})
-    db.commit()
 
     isbn = db.execute("SELECT isbn FROM books WHERE book_id = :book_id", {"book_id": book_id}).fetchone()
 
+    if len(review) <= 0 or len(review) > 255:
+        return redirect(f"/books/{isbn[0]}")
+
+    # Taking care of duplicate submissions 
+    try:
+        db.execute("INSERT INTO reviews (book_id, user_id, review, rating) VALUES (:book, :user, :review, :rating)", {"book": book_id, "user": user, "review": review, "rating": rating})
+        db.commit()
+    except Exception:
+        pass
+
+    flash('Your review was succesfully added')
     return redirect(f"/books/{isbn[0]}")
 
 

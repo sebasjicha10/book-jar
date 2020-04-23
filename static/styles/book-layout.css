@@ -1,0 +1,275 @@
+/* Search - Mobile First */
+body {
+  width: 100%;
+  background-color: white;
+}
+body .containter-fluid {
+  height: 100%;
+  padding: 0;
+  text-align: center;
+  /* Header and Nav - Mobile First */
+}
+body .containter-fluid header {
+  top: 0;
+  border-bottom: 0.5px solid #BCB5B5;
+  margin-bottom: 15px;
+}
+body .containter-fluid header nav #logout {
+  position: absolute;
+  left: 0;
+  margin-top: 20px;
+  margin-left: 10px;
+  color: #0096E6;
+}
+body .containter-fluid header nav #logo {
+  width: 41px;
+  height: 50px;
+}
+body .containter-fluid header nav #logout:hover, body .containter-fluid header nav #logo:hover {
+  opacity: 0.8;
+  text-decoration: none;
+}
+body .containter-fluid header nav #logo-web {
+  display: none;
+}
+body .containter-fluid #basic-info {
+  margin-bottom: 40px;
+}
+body .containter-fluid #basic-info h1, body .containter-fluid #basic-info h2, body .containter-fluid #basic-info h3 {
+  padding: 0;
+  margin: 0;
+}
+body .containter-fluid #basic-info h2 {
+  font-size: 20px;
+}
+body .containter-fluid #basic-info h3 {
+  font-size: 14px;
+}
+body .containter-fluid #basic-info h4 {
+  font-size: 12px;
+}
+body .containter-fluid #goodreads {
+  margin-bottom: 40px;
+}
+body .containter-fluid #goodreads #goodreads-logo {
+  width: 150px;
+}
+body .containter-fluid #goodreads #goodreads-data {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 10px;
+}
+body .containter-fluid #goodreads #goodreads-data h2, body .containter-fluid #goodreads #goodreads-data p {
+  font-size: 16px;
+  margin: 0;
+}
+body .containter-fluid #goodreads #goodreads-data p {
+  font-weight: bold;
+  color: #8860D0;
+}
+body .containter-fluid #reviews {
+  text-align: left;
+  width: 90%;
+  margin: 0 auto;
+}
+body .containter-fluid #reviews #review-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+body .containter-fluid #reviews #review-header .headers {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+body .containter-fluid #reviews #review-header #add:hover {
+  opacity: 0.8;
+}
+body .containter-fluid #reviews #review-header #review-logo {
+  width: 24px;
+  opacity: 0.5;
+}
+body .containter-fluid #reviews #review-header h2, body .containter-fluid #reviews #review-header p {
+  padding: 0;
+  margin: 0;
+}
+body .containter-fluid #reviews #review-header h2 {
+  font-size: 18px;
+}
+body .containter-fluid #reviews #review-header p {
+  font-size: 16px;
+  color: #0096E6;
+}
+body .containter-fluid #reviews #review-header #plus {
+  color: #0096E6;
+}
+body .containter-fluid #reviews #no-reviews {
+  margin-top: 20px;
+  color: #8860D0;
+}
+body .containter-fluid #reviews #review {
+  border-top: 0.5px solid #0096E6;
+  padding: 15px 0px;
+  margin: 0;
+}
+body .containter-fluid #reviews #review #user-rating {
+  margin: 0;
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+body .containter-fluid #reviews #review #user-rating #username {
+  font-weight: bold;
+  font-size: 14px;
+  color: #8860D0;
+}
+body .containter-fluid #reviews #review #user-review {
+  margin: 0;
+  word-wrap: break-word;
+  white-space: normal;
+}
+body .containter-fluid #submit-review {
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  display: none;
+}
+body .containter-fluid #submit-review #already-reviewd {
+  display: none;
+}
+body .containter-fluid #submit-review form {
+  background-color: white;
+  margin: 0 auto;
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  height: 70vh;
+  margin-top: 115px;
+}
+body .containter-fluid #submit-review form #rating-top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+body .containter-fluid #submit-review form #rating-top #close {
+  margin-right: 15px;
+}
+body .containter-fluid #submit-review form #rating-top #close:hover {
+  opacity: 0.7;
+}
+body .containter-fluid #submit-review form #radio {
+  margin-bottom: 10px;
+}
+body .containter-fluid #submit-review form #radio label {
+  margin-right: 20px;
+}
+body .containter-fluid #submit-review form #review-text {
+  border-radius: 0px;
+  border: 1px solid #8860D0;
+  height: 125px;
+  margin-bottom: 10px;
+}
+body .containter-fluid #submit-review form button {
+  padding: 8px 6px;
+  border: none;
+  border-radius: 0px;
+  background-color: #0096E6;
+  color: white;
+  margin-bottom: 10px;
+}
+body .containter-fluid #submit-review form button:hover {
+  opacity: 0.8;
+}
+
+/* Desktops and laptops */
+@media screen and (min-width: 1200px) {
+  body .containter-fluid header nav {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0px;
+  }
+  body .containter-fluid header nav #logo-mobile {
+    display: none;
+  }
+  body .containter-fluid header nav #logo-web {
+    display: inline-block;
+    width: 100px;
+  }
+  body .containter-fluid header nav #logo-web:hover {
+    opacity: 0.8;
+  }
+  body .containter-fluid header nav #logout {
+    position: relative;
+    margin: 0;
+  }
+  body .containter-fluid #goodreads #goodreads-data {
+    flex-direction: column;
+  }
+  body .containter-fluid #goodreads #goodreads-data .stats {
+    display: flex;
+    margin-bottom: 10px;
+  }
+  body .containter-fluid #goodreads #goodreads-data .stats h2 {
+    margin-right: 20px;
+  }
+  body .containter-fluid #reviews {
+    width: 100%;
+  }
+  body #web-review {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+  }
+  body #web-review #web-left {
+    width: 50%;
+    text-align: left;
+  }
+  body #web-review #web-left #add {
+    /* Eliminate add view button */
+    display: none;
+  }
+  body #web-review #submit-review {
+    display: inline-block;
+    position: relative;
+    width: 50%;
+    height: 100%;
+  }
+  body #web-review #submit-review #already-reviewed {
+    float: right;
+    display: inline-block;
+  }
+  body #web-review #submit-review form {
+    margin: 0;
+    padding: 0;
+    width: 80%;
+    float: right;
+  }
+  body #web-review #submit-review form h3 {
+    font-size: 18px;
+    font-weight: normal;
+  }
+  body #web-review #submit-review form #review-text {
+    height: 225px;
+  }
+  body #web-review #submit-review form button {
+    padding: 2px;
+    font-size: 14px;
+    width: 40%;
+  }
+  body #web-review #submit-review form #close {
+    /* Eliminate close button  */
+    display: none;
+  }
+}
+
+/*# sourceMappingURL=book-layout.css.map */
