@@ -63,7 +63,7 @@
             <form id="review-form" name="reviewForm" action="/review" method="post" onsubmit="return(validate(this))">
                 <div id="rating-top">
                     <h3>Your rating</h3>
-                    <i id="close" class="fas fa-times"></i>
+                    <i id="close" class="fas fa-times" onclick="hideForm()"></i>
                 </div>
                 <div id="radio">
                     <input checked type="radio" id="five" name="rating" value="5">
