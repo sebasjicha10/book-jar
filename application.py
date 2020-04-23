@@ -66,7 +66,7 @@ def login():
 
         # Ensure user_id exists and password is correct
         if len(given_username) != 1 or not check_password_hash(given_username[0]["password"], password):
-            return render_template("error.html", message="Invalid username and/or password.")
+            return render_template("error.html", message="Invalid usernamea nd/or password.")
 
         # Remember which user has logged in
         session["user_id"] = given_username[0]["user_id"]

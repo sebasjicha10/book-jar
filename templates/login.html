@@ -4,7 +4,7 @@
 {% endblock %}
 
 {% block body %}
-    <form id="login" action="/login" method="post">
+    <form name="loginForm" id="login" action="/login" method="post" onsubmit="return(validate())">
         <input type="text" placeholder="Username" name="username">
         <input type="password" placeholder="Password" name="password" pattern=".{6,}">
         <button type="submit">Log In</button>
@@ -18,6 +18,17 @@
         <button id="new-account" href="register">Create New Account</button>
     </form >
     <script>
-        
+        const validate = () => {
+            if (document.loginForm.username.value == "") {
+                alert("Please provide you username")
+                document.loginForm.username.focus()
+                return false
+            }
+            if (document.loginForm.password.value < 6) {
+                alert("Pasword must be at least 6 characters")
+                document.loginForm.password.focus()
+                return false
+            }
+        }
     </script>
 {% endblock %}

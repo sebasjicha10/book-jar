@@ -22,7 +22,7 @@
             <header>
                 <nav>
                     <a id="logout" href="{{ url_for('logout') }}">Log Out</a>
-                    <form id="web-form" action="/search_books" method="get">
+                    <form onsubmit="return(validate(this))" id="web-form" action="/search_books" method="get">
                         <input type="text" name="search" class="search_input" placeholder="Search by title, author or ISBN">
                         <button type="submit">
                             <i class="fas fa-search"></i>
@@ -35,7 +35,7 @@
                     class="img-fluid" src="../static/images/bar-jar.png" alt="BookJar logo"></a>
                 </nav>
             </header>
-            <form id="mobile-form" action="/search_books" method="get">
+            <form onsubmit="return(validate(this))" id="mobile-form" action="/search_books" method="get">
                 <input type="text" name="search" class="search_input" placeholder="Search by title, author or ISBN">
                 <button type="submit">
                     <i class="fas fa-search"></i>
@@ -45,5 +45,13 @@
             {% block body %}
             {% endblock %}
         </div>
+        <script>
+            const validate = (event) => {
+                if (event.search.value == "") {
+                event.search.focus()
+                return false
+                }
+            }
+        </script>
     </body>
 </html>

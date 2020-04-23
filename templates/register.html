@@ -3,10 +3,30 @@
     BookJar - Register
 {% endblock %}
 {% block body %}
-    <form action="/register" method="post">
+    <form name="registerForm" action="/register" method="post" onsubmit="return(validate())">
         <input type="text" placeholder="Username" name="username">
         <input type="password" placeholder="Password" name="password" pattern=".{6,}">
         <input type="password" placeholder="Confirm Password" name="confirmation" pattern=".{6,}">
         <button type="submit">Register</button>
     </form>
+    <script>
+        const validate = () => {
+            if (document.registerForm.username.value == "") {
+                alert("Please provide you username")
+                document.registerForm.username.focus()
+                return false
+            }
+            if (document.registerForm.password.value < 6) {
+                alert("Pasword must be at least 6 characters")
+                document.registerForm.password.focus()
+                return false
+            }
+            if (document.registerForm.confirmation.value < 6) {
+                alert("Pasword must be at least 6 characters")
+                document.registerForm.confirmation.focus()
+                return false
+            }
+        }
+    </script>
 {% endblock %}
+
