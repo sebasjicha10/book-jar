@@ -174,7 +174,7 @@ def book(isbn):
     goodreads = data["books"][0]
 
     # Fetch reviews
-    reviews = db.execute("SELECT DISTINCT rating, review, reviews.user_id, username FROM reviews JOIN users ON users.user_id = reviews.user_id::int WHERE book_id::int = :book_id;", {"book_id": book.book_id}).fetchall()
+    reviews = db.execute("SELECT DISTINCT review_id, rating, review, reviews.user_id, username FROM reviews JOIN users ON users.user_id = reviews.user_id::int WHERE book_id::int = :book_id;", {"book_id": book.book_id}).fetchall()
 
     # Ensure one review per user
     reviewed = False
