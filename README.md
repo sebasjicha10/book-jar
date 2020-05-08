@@ -1,7 +1,7 @@
 <h1>BookJar</h1>
 <h2>Description</h2>
 
-BookJar is a book review website. Users are able to register and log in using their username and password. Once they log in, they can search for books, leave reviews for individual books, and see the reviews made by other people. You’ll also use  a third-party API by Goodreads, another book review website, to pull in ratings from a broader audience. Finally, users are able to query for book details and book reviews programmatically via BookJar’s API. <a href="https://youtu.be/zCaWgDhzVxQ" target="_blank">Watch a video demo here</a>.<i style="font-size: 12px;"> (Clicking on the link will redirect you to YouTube).</i>
+BookJar is a book review website. Users are able to register and log in using their username and password. Once they log in, they can search for books, leave reviews for individual books, and see the reviews made by other people. The site also use  a third-party API by Goodreads, another book review website, to pull in ratings from a broader audience. Finally, users are able to query for book details and book reviews programmatically via BookJar’s API. <a href="https://youtu.be/zCaWgDhzVxQ" target="_blank">Watch a video demo here</a>.<i style="font-size: 12px;"> (Clicking on the link will redirect you to YouTube).</i>
 
 <h2>Back End</h2>
 <ul>
